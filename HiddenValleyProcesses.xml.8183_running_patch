@@ -1,0 +1,19 @@
+388c388,403
+< </parm> 
+---
+> </parm>
+> 
+> Additional parameters by Pedro:
+> <parm name="HiddenValley:nfl" default ="1.0" min="0.0">
+>     Number of qv flavours for running of alphaHV. It is
+>     convenient for this to be independent of nFlav.
+> </parm>
+> <flag name="HiddenValley:alphaHVrun" default="off">
+>     allow running of alphaHV.
+> </flag>
+> <parm name="HiddenValley:LambdaHV" default="0.1">
+>     Hidden Valley "QCD" scale. Note that pTminFSR must be larger than
+>     this scale, otherwise the shower will fail.
+> </parm>
+> 
+> 

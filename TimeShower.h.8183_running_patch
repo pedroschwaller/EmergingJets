@@ -1,0 +1,13 @@
+203c203
+<          singleWeakEmission, alphaSuseCMW, vetoWeakJets;
+---
+>          singleWeakEmission, alphaSuseCMW, vetoWeakJets, alphaHVrun;
+214,215c214,218
+<          vetoWeakDeltaR2;
+< 
+---
+>          vetoWeakDeltaR2, nfl, LambdaHV;
+>   // Additional initialization for running of alphaHV
+>   //bool alphaHVrun;
+>   //double nfl, LambdaHV;
+> 	

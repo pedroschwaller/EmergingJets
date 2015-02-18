@@ -1,0 +1,38 @@
+198a199,202
+>   alphaHVrun         = settingsPtr->flag("HiddenValley:alphaHVrun");
+>   nfl                = settingsPtr->parm("HiddenValley:nfl");
+>   LambdaHV         = settingsPtr->parm("HiddenValley:LambdaHV");
+> 	
+2304a2309,2310
+> 	
+> 	// NOTES by 
+2322a2329,2342
+> 	// ADDITIONAL SETTINGS
+> 	//bool alphaHVrun = 1;
+>     // this is taken from QCD
+> 	double myEmitCoef = colvFac* 2. * log(1. / zMinAbs - 1.);
+> 	// It will be useful to keep this different from nflav
+> 	//double nfl = 7;
+> 	// One loop beta function coefficient, depends on nCHV, nFlav, spinqv
+> 	// right now this is only correct for fermions!
+> 	double bHV7 = (11./6.*nCHV - 2./6.*nfl);
+> 	// Lambda_HV^2
+> 	double Lambda2HV = LambdaHV*LambdaHV;
+>   // END HACK
+> 	
+> 
+2330,2332c2350,2359
+<     // Pick pT2 (in overestimated z range).
+<     dip.pT2 = dip.pT2 * pow(rndmPtr->flat(), 1. / emitCoefTot);
+<     wt = 0.;
+---
+> 	  // Pick pT2 (in overestimated z range).
+> 	  // Allow the coupling to run if nCHV > 1
+> 	if (nCHV > 1. && alphaHVrun) {
+>       dip.pT2 = Lambda2HV*pow(dip.pT2/Lambda2HV , pow( rndmPtr->flat(),bHV7/myEmitCoef));
+> 	  wt = 0.;
+> 	}
+> 	else {
+> 	  dip.pT2 = dip.pT2 * pow(rndmPtr->flat(), 1. / emitCoefTot);
+> 	  wt = 0.;
+> 	}
