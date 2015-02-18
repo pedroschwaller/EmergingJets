@@ -5,7 +5,7 @@ src/TimeShower.cc
 include/TimeShower.h
 xmldoc/HiddenValleyProcesses.xml
 ```
-Furthermore the are some changes to make the code work with Xcode 5.1 
+Furthermore there are some changes to make the code work with Xcode 5.1 
 
 ```
 include/Pythia8/Basics.h
