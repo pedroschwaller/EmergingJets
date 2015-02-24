@@ -1,0 +1,56 @@
+! Input file based on main04.cmnd
+! This file contains commands to be read in for a Pythia8 run.
+! Lines not beginning with a letter or digit are comments.
+! Names are case-insensitive  -  but spellings-sensitive!
+! All masses & widths in GeV, lifetimes in millimeter
+
+
+! 1) Settings used in the main program.
+Main:numberOfEvents = 100000          ! number of events to generate
+
+! Settings for dark sector - perturbative physics
+! Bifundamental model
+4900001:m0 = 1000                   	! Mass of bi-fundamental resonance
+4900001:mWidth = 10                	! Width of bi-fundamental resonance
+HiddenValley:spinFv = 0
+4900001:isResonance = on
+4900001:mayDecay = on
+4900001:0:bRatio = 1
+4900001:0:meMode = 102
+
+! Z' model
+4900023:m0 = 2000                       ! Mass of Z'
+4900023:mWidth = 20                     ! Width of Z'
+! By default Z' decays to dark quarks with 40% branching!
+! Make it 99%
+4900023:rescaleBR = 0.025
+4900023:12:bratio = 0.99
+! 4900023:oneChannel on 1 102 4900101 4900101
+
+
+HiddenValley:Ngauge = 3             	! Number of dark QCD colours
+HiddenValley:alphaFSR = 0.7    		! Fixed dark QCD coupling
+! 0.7 gives a fragmentation result similar to the one expected from actual running
+
+! Settings for the dark sector - hadrons etc. 
+! Note: Since there is no confinement scale in the model
+! implementation, it is effectively set by the dark quark mass
+
+! Model B
+4900101:m0 = 4				! dark quark mass
+4900111:m0 = 2				! dark scalar (pion) mass
+4900111:tau0 = 50			! dark scalar (pion) lifetime (in mm)
+4900113:m0 = 8				! dark vector (rho) mass
+!Note: this should be larger than the dark quark mass (e.g. 1.1 * 4900101:m0)
+HiddenValley:LambdaHV = 4.
+HiddenValley:pTminFSR = 4.4   		! pT cutoff for dark shower
+
+4900111:tau0 = 5			! dark scalar (pion) lifetime (in mm)
+
+
+
+! Settings for dark meson decays. Best don't mess with these
+4900111:0:all on 1.0 102 1 -1      	! dark pion decay to down quarks
+4900113:0:all on 0.999 102 4900111 4900111	! dark vector to dark pions 99.9%
+4900113:addchannel on 0.001 102 1 -1	! dark vector to down quarks 0.1%
+
